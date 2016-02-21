@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0
+}
+
+header {
+    color: #FFF;
+    font-weight: bold;
+    background: #428cd1;
+    padding: 0.7em 0.9em;
+    margin-bottom: 0.5em
+}
+
+.content {
+    padding: 0 0.7em;
+}
+
+.row {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1em;
+    display: table;
+}
+
+label {
+    display: table;
+    font-size: 1em;
+    margin-bottom: 0.3em;
+    float: left;
+}
+
+input[type="text"] {
+    padding: 0.4em;
+    font-size: 1em;
+    width: 250px;
+    display: inline-block;
+}
+
+input[type="checkbox"] {
+    margin: 0 0 0 0.5em;
+    display: inline-block;
+}
+
+button {
+    font-size: 1.1em;
+    cursor: pointer;
+    float: right;
+    background: #428cd1;
+    border: 0;
+    padding: 0.3em 0.7em 0.4em;
+    margin: 0 0 0.7em 0;
+    color: #FFF;
+}
+button:hover {
+    background: #519EE6;
+}
+
+ul {
+    list-style:none;
+    margin: 0.3em 0 0 0;
+    padding: 0;
+}
+
+ul li {
+    float: left;
+    width: 37px;
+    text-align: center;
+}
+
+li label {
+    width: 100%;
+    display: block;
+}
+
+li input[type="checkbox"] {
+    display: block;
+    margin: auto;
+    float: none;
+}

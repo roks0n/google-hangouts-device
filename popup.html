@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+    <head>
+        <title>GTmetrix Analyzer</title>
+        <script src="scripts/app.js"></script>
+        <link href="style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <header>
+            Google Hangouts Device
+        </header>
+
+        <div class="content">
+            <div class="row">
+                <label for="hangout_url">Hangouts url</label>
+                <input type="text" name="hangout_url" placeholder="Google hangouts link goes here">
+            </div>
+            <div class="row">
+                <label for="hangout_url">Schedule</label>
+                <input type="text" name="schedule_time" placeholder="HH:mm">
+
+                <ul>
+                    <li>
+                        <label>Mon</label>
+                        <input type="checkbox" name="schedule_mon" value='1' class="day">
+                    </li>
+                    <li>
+                        <label>Tue</label>
+                        <input type="checkbox" name="schedule_tue" value='2' class="day">
+                    </li>
+                    <li>
+                        <label>Wed</label>
+                        <input type="checkbox" name="schedule_wed" value='3' class="day">
+                    </li>
+                    <li>
+                        <label>Thu</label>
+                        <input type="checkbox" name="schedule_thu" value='4' class="day">
+                    </li>
+                    <li>
+                        <label>Fri</label>
+                        <input type="checkbox" name="schedule_fri" value='5' class="day">
+                    </li>
+                    <li>
+                        <label>Sat</label>
+                        <input type="checkbox" name="schedule_sat" value='6' class="day">
+                    </li>
+                    <li>
+                        <label>Sun</label>
+                        <input type="checkbox" name="schedule_sun" value='0' class="day">
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <label for="device_mode">Device mode?</label>
+                <input type="checkbox" name="device_mode">
+                <small style="width: 100%; display: table;">
+                    Device mode will auto-join Google Hangout and presses "I am not
+                    sleeping" time to time.
+                </small>
+            </div>
+
+            <button id="saveBtn">Save</button>
+        </div>
+
+      </body>
+</html>

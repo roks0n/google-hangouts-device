@@ -1,5 +1,7 @@
 # google-hangouts-device
-Chrome extensions that schedule and open and join Google Hangouts automatically.
+Chrome extensions that schedules, opens and joins Google Hangouts automatically.
+
+![img](https://drive.google.com/uc?id=0B1bFpgxlGGQbNGdqS3VCeE1ESUk)
 
 # Usecase
 We show a fancy dashboard on a TV of our office wall which we also use for

@@ -18,11 +18,9 @@ in the office.
 5. End Done! :)
 
 # Usage
-Hangouts url: input the hangouts url you want to automatically open
-Schedule: input time (in HH:mm format! No validation is done!) and tick the
-days when you want to open the hangout url
-Device mode: Extension will auto-join Google Hangout and presses "I am not
-sleeping" from time to time.
+- Hangouts url: input the hangouts url you want to automatically open
+- Schedule: input time (in HH:mm format! No validation is done!) and tick the days when you want to open the hangout url
+- Device mode: Extension will auto-join Google Hangout and presses "I am notsleeping" from time to time.
 
 # Future features:
 - Connect with Google Calendar and start hangouts based on scheduled events

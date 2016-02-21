@@ -10,7 +10,7 @@ extensions automatically schedules, starts and joins a hangout in the office so
 external members can just join in and the stand-up can start as if everyone were
 in the office.
 
-# Loadging extensions for development
+# Loading extension for development
 1. Open `Extensions` in Chrome
 2. Tick `Developer mode`
 3. Click on `Load unpacked extension....`

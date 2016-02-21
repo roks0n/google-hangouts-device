@@ -5,9 +5,9 @@ Chrome extensions that schedules, starts and joins Google Hangouts automatically
 
 # Usecase
 We show a fancy dashboard on a TV of our office wall which we also use for
-stand-ups to connect the team in the office with team members that are no in the
-office. This extensions automatically starts and joins a hangout in the office
-so the external members can just join in and the stand-up can start as if
+stand-ups to connect the team in the office with team members that are not in the
+office. This extensions automatically schedules, starts and joins a hangout in
+the office so external members can just join in and the stand-up can start as if
 everyone were in the office.
 
 # Installation

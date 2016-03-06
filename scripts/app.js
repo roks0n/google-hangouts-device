@@ -48,11 +48,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 if(data['days'] && data['hour']) {
+                    chrome.alarms.clearAll(function() {
+                        console.log('All alarms cleared.');
+                    });
                     _.each(data['days'], function(day) {
                         var plannedTime = moment(data['hour'], 'HH:mm').day(day);
-                        chrome.alarms.clearAll(function() {
-                            console.log('All alarms cleared.');
-                        });
                         chrome.alarms.create('standup_' + day, {
                             when: plannedTime.valueOf(),
                             periodInMinutes: 10080

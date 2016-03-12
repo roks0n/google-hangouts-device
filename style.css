@@ -41,6 +41,11 @@ input[type="checkbox"] {
     display: inline-block;
 }
 
+select {
+    margin: 0 0.5em 0 0;
+    display: inline-block;
+}
+
 button {
     font-size: 1.1em;
     cursor: pointer;

@@ -16,7 +16,6 @@ chrome.alarms.onAlarm.addListener(function( alarm ) {
     chrome.windows.create({
         type: 'normal',
         focused: true,
-        state: 'fullscreen'
     }, function(created_window) {
         console.log("New Google Hangouts window lunched:", created_window);
         chrome.storage.local.get('hangout_url', function(result) {

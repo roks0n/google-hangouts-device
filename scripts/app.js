@@ -1,13 +1,29 @@
+Number.prototype.pad = function(size) {
+    var s = String(this);
+    while (s.length < (size || 2)) {s = "0" + s;}
+    return s;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     moment.locale('en-gb');
     var save_btn = document.getElementById('saveBtn');
     var hangout_input = document.querySelector('input[name="hangout_url"]');
     var device_checkbox = document.querySelector('input[name="device_mode"]');
-    var time_input = document.querySelector('input[name="schedule_time"]');
+    var hoursEl = document.querySelector('select[name="hour"]');
+    var minutesEl = document.querySelector('select[name="minute"]');
     var storage = chrome.storage.local;
     var device_mode = false;
+    var time;
 
-    // Get data from local storage
+    /* Setup hours and minutes */
+    for (var hour=0; hour<24; hour++) {
+       hoursEl.appendChild(new Option(hour.pad(2), hour.pad(2)));
+    }
+    for (var minute=0; minute<60; minute++) {
+        minutesEl.appendChild(new Option(minute.pad(2), minute.pad(2)));
+    }
+
+    /* Get data from local storage */
     storage.get('hangout_url', function(result) {
         if (result.hangout_url) {
             hangout_input.value = result.hangout_url;
@@ -18,9 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
             device_checkbox.checked = result.device_mode;
         }
     });
-    storage.get('hour', function(result) {
-        if (result.hour) {
-            time_input.value = result.hour;
+    storage.get('time', function(result) {
+        if (result.time) {
+            time = result.time;
+            hoursEl.value = time.split(':')[0];
+            minutesEl.value = time.split(':')[1];
         }
     });
     storage.get('days', function(result) {
@@ -34,12 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Save data to local storage
+    /* Save data to local storage */
     save_btn.addEventListener('click', function() {
             var data = {}
             data['days'] = [];
             if (hangout_input) {
-                data['hour'] = time_input.value;
+                data['time'] = hoursEl.value + ":" + minutesEl.value
                 data['hangout_url'] = hangout_input.value;
                 data['device_mode'] = device_checkbox.checked;
 
@@ -47,16 +65,32 @@ document.addEventListener('DOMContentLoaded', function() {
                     data['days'].push(el.value);
                 });
 
-                if(data['days'] && data['hour']) {
+                if(data['days'] && data['time']) {
                     chrome.alarms.clearAll(function() {
                         console.log('All alarms cleared.');
                     });
                     _.each(data['days'], function(day) {
-                        var plannedTime = moment(data['hour'], 'HH:mm').day(day);
-                        chrome.alarms.create('standup_' + day, {
-                            when: plannedTime.valueOf(),
-                            periodInMinutes: 10080
-                        });
+                        var plannedTime = moment(data['time'], 'HH:mm').day(day);
+                        var period = 10080; // time in minutes
+                        timeDifferenceFromNow = plannedTime.diff(moment());
+
+                        /* if plannedTime is in the future, create an alarm */
+                        if (timeDifferenceFromNow > 0) {
+                            chrome.alarms.create('standup_' + day, {
+                                when: plannedTime.valueOf(),
+                                periodInMinutes: period
+                            });
+                        } else {
+                            /*
+                            time is in the past, we need to create an alarm
+                            in the future - add miliseconds so that alarm is
+                            scheduled for 7 days from the past
+                            */
+                            chrome.alarms.create('standup_' + day, {
+                                when: plannedTime.valueOf() + (period * 60 * 1000),
+                                periodInMinutes: period
+                            });
+                        }
                     });
                 }
 

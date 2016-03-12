@@ -4,7 +4,7 @@
     "short_name": "Google Hangouts Device",
 	"description": "Schedule a Google Hangouts and join it automatically! Great for consistent periodic meetings like stand-ups.",
 	"author": "roks0n",
-	"version": "0.52",
+	"version": "0.53",
 	"icons": {
         "16": "media/icon_16.png",
         "48": "media/icon_48.png",
